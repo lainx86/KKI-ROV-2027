@@ -85,7 +85,7 @@ flowchart TD
     BEC --> SERVO["Servo gripper"]
 ```
 
-Keunggulan pendekatan 48 V adalah arus tether jauh lebih rendah dibanding mengirim daya yang sama pada 12 V. Pada daya 1,2 kW, arus ideal di 12 V adalah sekitar 100 A, sedangkan di 48 V sekitar 25 A. Karena rugi konduktor mengikuti \(P_{loss}=I^2R\), menurunkan arus menjadi seperempat secara ideal menurunkan rugi resistif menjadi sekitar seperenambelas untuk kabel yang sama.
+Keunggulan pendekatan 48 V adalah arus tether jauh lebih rendah dibanding mengirim daya yang sama pada 12 V. Pada daya 1,2 kW, arus ideal di 12 V adalah sekitar 100 A, sedangkan di 48 V sekitar 25 A. Karena rugi konduktor mengikuti $P_{loss}=I^2R$, menurunkan arus menjadi seperempat secara ideal menurunkan rugi resistif menjadi sekitar seperenambelas untuk kabel yang sama.
 
 Kekurangannya adalah kebutuhan converter besar onboard. Sebagai gambaran nyata, Mean Well SD-500L-12 menerima 19–72 VDC dan menghasilkan 12 V/40 A atau 500 W, dengan isolasi 2 kVAC dan harga RS Indonesia sekitar Rp2,276 juta per unit; tiga unit dapat membentuk tiga kanal propulsion dengan dua thruster per converter. citeturn303160search0 Tiga unit tersebut saja sudah sekitar Rp6,8 juta, sehingga pendekatan ini reliabel tetapi mahal untuk budget Rp20 juta.
 
@@ -217,29 +217,29 @@ Angka 1.280 W berasal dari enam T200 × 205 W = 1.230 W ditambah sekitar 50 W pr
 
 Saya gunakan efisiensi converter propulsion **90% sebagai asumsi desain**, kemudian hitung resistansi dua arah tether:
 
-\[
+$
 R_{loop}=\rho\frac{2L}{A}
-\]
+$
 
-dengan \(\rho=0{,}0175\;\Omega\,mm^2/m\) sebagai nilai engineering tembaga sekitar suhu ruang, \(L\) panjang tether satu arah, dan \(A\) luas penampang satu konduktor.
+dengan $\rho=0{,}0175\;\Omega\,mm^2/m$ sebagai nilai engineering tembaga sekitar suhu ruang, \(L\) panjang tether satu arah, dan \(A\) luas penampang satu konduktor.
 
 Voltage drop:
 
-\[
+$
 V_{drop}=I R_{loop}
-\]
+$
 
 Rugi kabel:
 
-\[
+$
 P_{loss}=I^2R_{loop}
-\]
+$
 
 Karena converter bertindak mendekati **constant-power load**, arus meningkat saat voltage di ujung tether turun. Saya karena itu menyelesaikan:
 
-\[
+$
 V_{ROV}=48-\frac{P_{in}}{V_{ROV}}R_{loop}
-\]
+$
 
 bukan hanya membagi daya dengan 48 V.
 
@@ -260,9 +260,9 @@ Tabel menunjukkan mengapa panjang tether belum boleh dianggap detail sekunder. P
 
 Dengan skenario maksimum 1.280 W onboard dan converter 90%, converter harus menerima sekitar:
 
-\[
+$
 P_{tether-load} = \frac{1280}{0.90}\approx1422\;W
-\]
+$
 
 Pada tether 30 m dengan conductor sekitar 13,3 mm², kabel menambah sekitar 77 W sehingga PSU topside harus menyediakan kira-kira 1,50 kW sebelum margin desain. Maka kelas PSU 1,5 kW menjadi minimum praktis untuk skenario enam T200 pada 12 V full-throttle; margin 15–25% akan mendorong kebutuhan ke sekitar 1,7–1,9 kW jika full-power simultan memang harus dijamin.
 
@@ -347,7 +347,8 @@ Dengan budget ini, saya tetap tidak menyarankan enam T200 baru karena enam unit 
 
 ### Budget Rp35 juta
 
-Pada Rp35 juta, sistem custom propulsion dapat dibuat jauh lebih robust: PSU 1,5 kW, converter terisolasi, redundant logic regulator, proper power contactor, penetrator subsea, spare Pixhawk/ESC kritis atau satu spare thruster.
+Pada Rp35 juta, sistem custom propulsion dapat dibuat jauh lebih robust: PSU 1,5 kW, converter terisolasi, redundant logic
+Risiko regulator, proper power contactor, penetrator subsea, spare Pixhawk/ESC kritis atau satu spare thruster.
 
 Sementara itu, sistem enam T200 lengkap kemungkinan tetap melampaui Rp35 juta. Enam T200 sekitar Rp25,2 juta dan enam Basic ESC sekitar Rp4,8 juta sudah mendekati Rp30 juta sebelum Raspberry Pi, Pixhawk, PSU, tether, converter, gripper, kamera, penetrator dan proteksi. citeturn559588search12turn949619search26turn226771search0
 
